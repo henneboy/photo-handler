@@ -28,4 +28,8 @@
     <ProjectReference Include="..\photo-handler\photo-handler.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SortingServiceTestData\ToDirEqualData\" />
+  </ItemGroup>
+
 </Project>
