@@ -8,7 +8,7 @@ public static class FileComparer
         { Criteria.filename, (a, b) => a.Name == b.Name},
         { Criteria.filesize, (a, b) => a.Length == b.Length},
         { Criteria.lastmodified, (a, b) => a.LastWriteTime == b.LastWriteTime},
-        { Criteria.created, (a, b) => a.CreationTime == b.CreationTime},
+        { Criteria.creationTime, (a, b) => a.CreationTime == b.CreationTime},
         { Criteria.filecontent, (a, b) => EqualData(a, b)},
         { Criteria.filetype, (a, b) => a.Extension == b.Extension}
     };

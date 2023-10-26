@@ -5,7 +5,7 @@ public enum Criteria
     filename,
     filesize,
     lastmodified,
-    created,
+    creationTime,
     filecontent,
     filetype
 }
