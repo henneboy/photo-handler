@@ -25,7 +25,7 @@ public class SortingService : ISortingService
 			filesToSort.Remove(pathToCurrentFile);
 			FileInfo currentFile = new(pathToCurrentFile);
 			//Sort this file wrt. the other files.
-			if (allowDuplicates)
+			if (!allowDuplicates)
 			{
 				foreach (string filePath in filesToSort)
 				{
@@ -33,11 +33,11 @@ public class SortingService : ISortingService
 					if (FileComparer.CompareFiles(currentFile, file, state.Criteria!))
 					{
 						filesToSort.Remove(filePath);
+						numberOfDuplicateFiles++;
 					}
 				}
 			}
 			MoveCurrentFileToTargetDir(currentFile, state);
-			numberOfDuplicateFiles++;
 		}
 		return numberOfDuplicateFiles;
 	}
@@ -45,10 +45,10 @@ public class SortingService : ISortingService
 	private static void MoveCurrentFileToTargetDir(FileInfo file, State state)
 	{
 		string destDirPath = Path.Join(state.ToDir!.FullName, file.CreationTimeUtc.Year.ToString());
-		if (Directory.Exists(destDirPath))
+		if (!Directory.Exists(destDirPath))
 		{
 			Directory.CreateDirectory(destDirPath);
 		}
-		file.CopyTo(destDirPath);
+		file.CopyTo(Path.Join(destDirPath, file.Name));
 	}
 }
