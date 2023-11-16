@@ -10,7 +10,7 @@ public class FileComparerTests
 	[Theory]
 	[InlineData(Criteria.filecontent, true)]
 	[InlineData(Criteria.filetype, true)]
-	[InlineData(Criteria.creationTime, false)]
+	[InlineData(Criteria.creationTime, true)]
 	[InlineData(Criteria.filename, false)]
 	public void CompareFiles_Tests(Criteria criteria, bool result)
 	{

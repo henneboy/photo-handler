@@ -29,7 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SortingServiceTestData\toDir\" />
+    <Folder Include="SortingServiceTestData\1_toDir\" />
+    <Folder Include="SortingServiceTestData\2_toDir\2023\" />
+    <Folder Include="SortingServiceTestData\3_toDir\2023\" />
   </ItemGroup>
 
 </Project>
