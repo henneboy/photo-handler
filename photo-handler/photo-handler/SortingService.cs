@@ -65,6 +65,7 @@ public class SortingService : ISortingService
             Directory.CreateDirectory(destDirPath);
         }
         string destFilePath = Path.Join(destDirPath, file.Name);
-        file.CopyTo(destFilePath);
+        FileInfo destFile = file.CopyTo(destFilePath);
+        destFile.CreationTimeUtc = file.CreationTimeUtc;
     }
 }
