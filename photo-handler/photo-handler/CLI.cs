@@ -32,6 +32,7 @@ public class CLI
 				if (f != null)
 				{
 					exitProgram = f.Invoke();
+					PrintRuler();
 					continue;
 				}
 			}
@@ -41,6 +42,7 @@ public class CLI
 				if (f != null)
 				{
 					bool _ = f.Invoke();
+					PrintRuler();
 				}
 				else
 				{
@@ -73,4 +75,6 @@ public class CLI
 			}
 		}
 	}
+
+	public static void PrintRuler() => Console.WriteLine(new string('-', 30));
 }

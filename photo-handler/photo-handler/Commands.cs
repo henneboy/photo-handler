@@ -32,7 +32,6 @@ public class Commands
 	private static bool Exit() => true;
 	private bool Help()
 	{
-		Console.WriteLine("-------------------------");
 		Console.WriteLine("Commands:");
 		foreach (string key in GetCommands().Keys)
 		{
@@ -181,7 +180,7 @@ public class Commands
 		var result = _ss.PerformSorting(CLI.YOrNoPromt(), _state);
 		Console.WriteLine("Sorting completed, all files can be found in: " + _state.ToDir);
 		Console.WriteLine("If desired use the 'delete-from-dir' to remove the from directory: " + _state.FromDir);
-		Console.WriteLine(new string('-', 30));
+		CLI.PrintRuler();
 		Console.WriteLine("Stats of the sorting:");
 		Console.WriteLine("Execution time: " + result.ExecutionTime);
 		Console.WriteLine("Number of duplicate files: " + result.NumberOfDuplicateFiles);
