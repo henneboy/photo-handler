@@ -146,6 +146,7 @@ public class Commands
 				}
 			}
 		}
+		Console.WriteLine("Criteria have been updated.");
 		return false;
 	}
 
