@@ -176,7 +176,7 @@ public class Commands
 
 	private bool RunSorting()
 	{
-		Console.WriteLine("Do you want to avoid copying duplicates of the same file.");
+		Console.WriteLine("Do you want to copy duplicates of the same file? (y/n)");
 		var result = _ss.PerformSorting(CLI.YOrNoPromt(), _state);
 		Console.WriteLine("Sorting completed, all files can be found in: " + _state.ToDir);
 		Console.WriteLine("If desired use the 'delete-from-dir' to remove the from directory: " + _state.FromDir);
@@ -186,6 +186,7 @@ public class Commands
 		Console.WriteLine("Number of duplicate files: " + result.NumberOfDuplicateFiles);
 		Console.WriteLine("Size of source directory(from dir): " + result.FromByteSize);
 		Console.WriteLine("Size of target directory(to dir): " + result.ToByteSize);
+		Console.WriteLine("Space reduction: " + (result.FromByteSize-result.ToByteSize));
 		return false;
 	}
 }

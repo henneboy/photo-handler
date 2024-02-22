@@ -31,8 +31,9 @@ public class SortingService : ISortingService
 		while (filesToSort.Count >= 2)
 		{
 			string pathToCurrentFile = filesToSort.First();
-			filesToSort.Remove(pathToCurrentFile);
+            filesToSort.Remove(pathToCurrentFile);
 			FileInfo currentFile = new(pathToCurrentFile);
+            Console.WriteLine($"{filesToSort.Count} left, current file: {currentFile.Name}");
 			//Sort this file wrt. the other files.
 			if (!allowDuplicates)
 			{
