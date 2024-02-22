@@ -18,7 +18,6 @@ public class Commands
 			{ "clear", ClearConsole},
 			{ "set-from-dir", SetFromDir},
 			{ "set-to-dir", SetToDir},
-			{ "clear", ClearConsole},
 			{ "set-criteria", SetCriteria},
 			{ "view-state", ViewState},
 			{ "run-sorting", RunSorting}
