@@ -15,6 +15,13 @@ public class SortingService : ISortingService
         return new SortingResults(FromByteSize, ToByteSize, NumberOfDuplicateFiles, ExecutionStartTime - DateTimeOffset.UtcNow);
     }
 
+    /// <summary>
+    /// Performs the sorting.
+    /// </summary>
+    /// <param name="allowDuplicates"></param>
+    /// <param name="state"></param>
+    /// <returns>The amount of dupliace files found.</returns>
+    /// <exception cref="InvalidOperationException"></exception>
     private static long SortingAlgo(bool allowDuplicates, State state)
     {
         long numberOfDuplicateFiles = 0;

@@ -5,9 +5,13 @@ namespace photo_handler_tests;
 
 public class SortingServiceTests
 {
+	private readonly string currentYear;
+	public SortingServiceTests()
+	{
+		currentYear = DateTime.UtcNow.Year.ToString();
+	}
 	private readonly string _testDataPath = "../../../SortingServiceTestData";
-
-	private void ResetResultDir(string toDirPath)
+	private static void ResetResultDir(string toDirPath)
 	{
 		// Clean up from previous run
 		var subDirs = Directory.GetDirectories(toDirPath);
@@ -51,8 +55,8 @@ public class SortingServiceTests
 		ss.PerformSorting(true, state);
 
 		// Assert
-		File.Exists(Path.Combine(toDir, "2023", "f1.txt")).Should().BeTrue();
-		File.Exists(Path.Combine(toDir, "2023", "f2.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f1.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f2.txt")).Should().BeTrue();
 	}
 
 	[Fact]
@@ -86,8 +90,8 @@ public class SortingServiceTests
 		ss.PerformSorting(false, state);
 
 		// Assert
-		File.Exists(Path.Combine(toDir, "2023", "f1.txt")).Should().BeTrue();
-		File.Exists(Path.Combine(toDir, "2023", "f2.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f1.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f2.txt")).Should().BeTrue();
 	}
 
 	[Fact]
@@ -121,8 +125,8 @@ public class SortingServiceTests
 		ss.PerformSorting(false, state);
 
 		// Assert
-		File.Exists(Path.Combine(toDir, "2023", "f1.txt")).Should().BeTrue();
-		File.Exists(Path.Combine(toDir, "2023", "f2.txt")).Should().BeFalse();
+		File.Exists(Path.Combine(toDir, currentYear, "f1.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f2.txt")).Should().BeFalse();
 	}
 
 	[Fact]
@@ -156,14 +160,14 @@ public class SortingServiceTests
 		ss.PerformSorting(true, state);
 
 		// Assert
-		File.Exists(Path.Combine(toDir, "2023", "f1.txt")).Should().BeTrue();
-		File.Exists(Path.Combine(toDir, "2023", "f2.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f1.txt")).Should().BeTrue();
+		File.Exists(Path.Combine(toDir, currentYear, "f2.txt")).Should().BeTrue();
 
-		FileInfo f1 = new(Path.Combine(toDir, "2023", "f1.txt"));
+		FileInfo f1 = new(Path.Combine(toDir, currentYear, "f1.txt"));
 		FileInfo f1_expected = new(Path.Combine(fromDir, "f1.txt"));
 		f1.CreationTimeUtc.Should().Be(f1_expected.CreationTimeUtc);
 
-		FileInfo f2 = new(Path.Combine(toDir, "2023", "f2.txt"));
+		FileInfo f2 = new(Path.Combine(toDir, currentYear, "f2.txt"));
 		FileInfo f2_expected = new(Path.Combine(fromDir, "f2.txt"));
 		f2.CreationTimeUtc.Should().Be(f2_expected.CreationTimeUtc);
 	}
