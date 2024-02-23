@@ -31,9 +31,9 @@ public class SortingService : ISortingService
 		while (filesToSort.Count >= 2)
 		{
 			string pathToCurrentFile = filesToSort.First();
-            filesToSort.Remove(pathToCurrentFile);
+			filesToSort.Remove(pathToCurrentFile);
 			FileInfo currentFile = new(pathToCurrentFile);
-            Console.WriteLine($"{filesToSort.Count} left, current file: {currentFile.Name}");
+			Console.WriteLine($"{filesToSort.Count} left, current file: {currentFile.Name}");
 			//Sort this file wrt. the other files.
 			if (!allowDuplicates)
 			{
@@ -70,8 +70,21 @@ public class SortingService : ISortingService
 		{
 			Directory.CreateDirectory(destDirPath);
 		}
-		string destFilePath = Path.Join(destDirPath, file.Name);
+		string destFilePath = GetUniqueDestFilePath(destDirPath, file);
 		FileInfo destFile = file.CopyTo(destFilePath);
 		destFile.CreationTimeUtc = file.CreationTimeUtc;
+	}
+
+	private static string GetUniqueDestFilePath(string destDirPath, FileInfo file)
+	{
+		string s = Path.Join(destDirPath, file.Name);
+		string filename = file.Name.Substring(0, file.Name.Length - file.Extension.Length);
+		uint counter = 1;
+		while (File.Exists(s))
+		{
+			s = Path.Join(destDirPath, filename + counter.ToString() + file.Extension);
+			counter++;
+		}
+		return s;
 	}
 }

@@ -33,6 +33,7 @@
     <Folder Include="SortingServiceTestData\2_toDir\2023\" />
     <Folder Include="SortingServiceTestData\3_toDir\2023\" />
     <Folder Include="SortingServiceTestData\4_toDir\" />
+    <Folder Include="SortingServiceTestData\5_toDir\" />
   </ItemGroup>
 
 </Project>
