@@ -186,7 +186,7 @@ public class Commands
 		Console.WriteLine("Number of duplicate files: " + result.NumberOfDuplicateFiles);
 		Console.WriteLine("Size of source directory(from dir): " + result.FromByteSize);
 		Console.WriteLine("Size of target directory(to dir): " + result.ToByteSize);
-		Console.WriteLine("Space reduction: " + (result.FromByteSize-result.ToByteSize));
+		Console.WriteLine("Space reduction: " + (result.FromByteSize - result.ToByteSize));
 		return false;
 	}
 }
