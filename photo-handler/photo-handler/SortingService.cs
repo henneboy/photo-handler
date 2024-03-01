@@ -74,7 +74,7 @@ public class SortingService : ISortingService
 
 	private static void MoveCurrentFileToTargetDir(FileInfo file, State state)
 	{
-		string destDirPath = Path.Join(state.ToDir!.FullName, file.CreationTimeUtc.Year.ToString());
+		string destDirPath = Path.Join(state.ToDir!.FullName, FileNameParser.GetCreationYear(file));
 		if (!Directory.Exists(destDirPath))
 		{
 			Directory.CreateDirectory(destDirPath);
